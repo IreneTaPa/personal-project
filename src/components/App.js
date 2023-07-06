@@ -38,6 +38,7 @@ function App() {
               src={background}
               alt="Corkboard for postit's"
             />
+            <div className="post-it">POST IT</div>
           </div>
         </section>
       </main>
