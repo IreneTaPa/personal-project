@@ -1,9 +1,46 @@
 import '../styles/App.scss';
-
+import background from '../images/corkboard.jpg';
 function App() {
   return (
     <div>
-      <h1 className="h1">Hola mundo</h1>
+      <header>
+        <h1 className="h1">REMEMBER IT</h1>
+      </header>
+      <main>
+        <section className="section__form">
+          <div className="form">
+            <div className="btns">
+              <button className="color__btn">color</button>
+              <button className="italics__btn">cursiva</button>
+              <button className="bold__btn">negrita</button>
+              <button className="hightlighter__btn">subrayado</button>
+            </div>
+            <textarea className="form__text" placeholder="Escribe aqui..." />
+
+            <div className="inferior__btns">
+              <select className="form__select" name="" id="">
+                <option value="Trabajo">Trabajo</option>
+                <option value="Hogar">Hogar</option>
+                <option value="Crea un tema">Crea un tema...</option>
+              </select>
+              <input
+                className="form__input"
+                type="button"
+                value="Añade al tablero"
+              />
+            </div>
+          </div>
+        </section>
+        <section className="corkboard">
+          <div className="corkboard__div">
+            <img
+              className="corkboard__img"
+              src={background}
+              alt="Corkboard for postit's"
+            />
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
