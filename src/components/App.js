@@ -1,6 +1,23 @@
 import '../styles/App.scss';
 import background from '../images/corkboard.jpg';
+import { useState } from 'react';
 function App() {
+  const [postits, setPostit] = useState([]);
+  const [content, setContent] = useState('');
+
+  const addPostIt = () => {
+    const newPostit = {
+      id: Date.now(),
+      content: content,
+    };
+    setPostit([...postits, newPostit]);
+    setContent('');
+  };
+
+  const handleContentChange = (event) => {
+    setContent(event.target.value);
+  };
+
   return (
     <div>
       <header>
@@ -15,7 +32,12 @@ function App() {
               <button className="bold__btn">negrita</button>
               <button className="hightlighter__btn">subrayado</button>
             </div>
-            <textarea className="form__text" placeholder="Escribe aqui..." />
+            <textarea
+              className="form__text"
+              placeholder="Escribe aqui..."
+              value={content}
+              onChange={handleContentChange}
+            />
 
             <div className="inferior__btns">
               <select className="form__select" name="" id="">
@@ -27,6 +49,7 @@ function App() {
                 className="form__input"
                 type="button"
                 value="Añade al tablero"
+                onClick={addPostIt}
               />
             </div>
           </div>
@@ -38,7 +61,18 @@ function App() {
               src={background}
               alt="Corkboard for postit's"
             />
-            <div className="post-it">POST IT</div>
+            <ul>
+              {postits.map((postit, index) => (
+                <li
+                  className="post-it"
+                  key={postit.id}
+                  style={{ marginLeft: index !== 0 ? '500px' : '0' }}
+                  draggable="true"
+                >
+                  {postit.content}
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       </main>
