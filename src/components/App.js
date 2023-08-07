@@ -9,6 +9,8 @@ function App() {
     const newPostit = {
       id: Date.now(),
       content: content,
+      x: 10,
+      y: 10,
     };
     setPostit([...postits, newPostit]);
     setContent('');
@@ -61,12 +63,12 @@ function App() {
               src={background}
               alt="Corkboard for postit's"
             />
-            <ul>
-              {postits.map((postit, index) => (
+            <ul className="list__post-it">
+              {postits.map((postit) => (
                 <li
                   className="post-it"
                   key={postit.id}
-                  style={{ marginLeft: index !== 0 ? '500px' : '0' }}
+                  style={{ left: postit.x, top: postit.y }}
                   draggable="true"
                 >
                   {postit.content}
